@@ -1,0 +1,50 @@
+@import "../../common/style/variables";
+
+.account{
+  position: relative;
+  min-height: 100vh;
+  height: auto;
+  overflow: hidden !important;
+
+
+  .form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+
+    .content{}
+
+  }
+
+  svg{
+    position: absolute;
+    left: -5%;
+    transform: rotate(90deg);
+  }
+
+  .image{
+    background-color: $color_main_3;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    p{
+      font-size: 40px;
+      // text-transform: uppercase;
+      line-height: 50px;
+    }
+
+  }
+
+
+}
+
+@media screen and (max-width: 1024px) {
+
+  .image, svg{
+    display: none !important;
+  }
+
+}

@@ -1,0 +1,38 @@
+<div class="navmenu" [hidden]="closed">
+
+  <!-- close button -->
+  <button class="close" mat-mini-fab color="primary" (click)="emitToggleSideMenuFun()">
+    <mat-icon>close</mat-icon>
+  </button>
+
+  <!-- name of app -->
+  <h2> {{ sideMenuName }} </h2>
+
+  <!-- all list navigation -->
+  <div class="navLists">
+
+    <!-- main list -->
+    <div class="navList">
+      <ul>
+        <li *ngFor="let item of navList" [routerLink]="item.routeLink" routerLinkActive="active" (click)="platformDevicePc ? '' : emitToggleSideMenuFun()">
+          <i class="bi" [ngClass]="item.icone"></i>
+          <span> {{ item.name }} </span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- second list  -->
+    <div class="navList">
+      <ul>
+        <li *ngFor="let item of secondNavList" [routerLink]="item.routeLink" routerLinkActive="active" (click)="platformDevicePc ? '' : emitToggleSideMenuFun()">
+          <i class="bi" [ngClass]="item.icone"></i>
+          <span> {{ item.name }} </span>
+        </li>
+        <!-- Dynamique Content -->
+        <ng-content select="[customeLi]"></ng-content>
+      </ul>
+    </div>
+
+  </div>
+
+</div>

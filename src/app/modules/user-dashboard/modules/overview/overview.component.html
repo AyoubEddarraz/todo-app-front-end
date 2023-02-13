@@ -1,0 +1,74 @@
+<div class="overview">
+
+  <!-- Head Section -->
+  <div class="head_section_presentation rounded shadow-sm row">
+
+    <div class="presentation_image col-lg-6 my-5">
+      <img src="/assets/images/svg/todo.svg" alt="todo image">
+    </div>
+
+    <div class="presentation_info col-lg-6 my-5 px-3">
+      <div class="content">
+        <span class="title">La list de projects</span>
+        <p class="info mt-3" *ngIf="listProjets.length"> {{ listProjets.length }} {{ listProjets.length > 1 ? "projects" : "project" }} Exsiste.</p>
+        <p class="info mt-3" *ngIf="listProjets.length == 0"> La table Projects Vide.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Title Section -->
+  <div class="section_title my-5 text-center">list de projects</div>
+
+  <!-- List Projets -->
+  <div class="projetsList pb-5">
+
+    <!-- list of Projects -->
+    <div class="list w-100">
+
+      <ng-container *ngFor="let projet of listProjets; index as i">
+        <div class="projet_item shadow-sm rounded animate__animated animate__zoomIn" [class.dark_mode]="darkmode">
+          <p class="title mb-3"> {{ projet.name }} </p>
+          <p class="desc"> {{ projet.description }} </p>
+          <i class="bi bi-three-dots more" [class.dark_mode_second]="darkmode"  [matMenuTriggerFor]="projectOption"></i>
+          <i class="bi bi-box-arrow-in-up-right" [class.dark_mode_second]="darkmode" (click)="navigateToProject(projet)"></i>
+        </div>
+
+        <mat-menu #projectOption="matMenu">
+          <button mat-menu-item (click)="updateProjectFun(projet , i)">
+            <mat-icon>edit</mat-icon>
+            <span>update</span>
+          </button>
+          <button mat-menu-item (click)="deletePorject(projet.projectId , i)">
+            <mat-icon>delete</mat-icon>
+            <span>delete</span>
+          </button>
+        </mat-menu>
+      </ng-container>
+
+    </div>
+
+  </div>
+
+  <!-- Add new Project -->
+  <button class="newProjet" mat-fab color="primary" (click)="newProjectModalFun(true)">
+    <mat-icon>add</mat-icon>
+  </button>
+
+</div>
+
+<!-- Model Create Project -->
+<div class="custome_model" *ngIf="newProjectModal">
+  <div class="close" (click)="newProjectModalFun(false)">
+    <mat-icon>close</mat-icon>
+  </div>
+  <div class="content_model large rounded shadow-sm">
+    <h3> {{ updateActive ? "update" : "New" }} Project</h3>
+    <form [formGroup]="newProjectForm">
+      <input type="text" class="form-control my-2" name="name" formControlName="name" placeholder="project name*" required>
+      <textarea name="description" cols="20" rows="2" class="form-control my-3" formControlName="description" placeholder="project description"></textarea>
+    </form>
+    <button mat-raised-button color="primary" class="w-100 large" (click)="newProjectFun()" [disabled]="!newProjectForm.valid" *ngIf="!updateActive" >add new project</button>
+    <button mat-raised-button color="primary" class="w-100 large" (click)="updateProject()" [disabled]="!newProjectForm.valid" *ngIf="updateActive" >update project</button>
+  </div>
+</div>

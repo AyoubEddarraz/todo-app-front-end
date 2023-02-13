@@ -1,0 +1,23 @@
+<!-- App -->
+<mat-drawer-container class="app" [class.main_dark_mode]="darkmode">
+  <!-- sidenav -->
+  <mat-drawer class="sidenav" [class.show]="!closed" [class.dark_mode]="darkmode" mode="side" opened>
+    <app-side-menu [sideMenuName]="sideMenuName" [navList]="navList" [secondNavList]="secondNavList" [closed]="closed" (emitToggleSideMenu)="toggleSideMenu()">
+      <li customeLi (click)="logOut()">
+        <i class="bi bi-box-arrow-right"></i>
+        <span>log out</span>
+      </li>
+    </app-side-menu>
+  </mat-drawer>
+  <!-- content -->
+  <mat-drawer-content class="content">
+    <!-- headr of app -->
+    <header class="p-2" [class.dark_mode]="darkmode">
+      <app-header (emitToggleSideMenu)="toggleSideMenu()"></app-header>
+    </header>
+    <!-- Content of app -->
+    <div class="hero p-2">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

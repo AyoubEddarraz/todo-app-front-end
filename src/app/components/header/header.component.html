@@ -1,0 +1,63 @@
+<div class="header row">
+
+  <!-- search Section -->
+  <div class="search_section col-lg-6 col-md-9">
+
+    <!-- search input -->
+    <div class="search" [class.dark_mode]="darkmode">
+      <i class="bi bi-search"></i>
+      <input type="text" placeholder="Search">
+    </div>
+
+  </div>
+
+  <!-- account section -->
+  <div class="account_section col-lg-6 col-md-3">
+
+    <!-- Account -->
+    <div class="account">
+
+      <div class="icon menu mx-1" (click)="emitToggleSideMenuFun()">
+        <i class="bi bi-list"></i>
+      </div>
+
+      <!-- info contains FAQ and Notifications -->
+      <div class="info">
+
+        <!-- FAQ -->
+        <div class="icon FAQ mx-1" [matMenuTriggerFor]="FAQMenu">
+          <i class="bi bi-question-circle"></i>
+        </div>
+
+        <!-- Notifications -->
+        <div class="icon notifications mx-1" [matMenuTriggerFor]="notificationsMenu">
+          <i class="bi bi-bell"></i>
+        </div>
+
+        <!-- Profile -->
+        <div class="icon profile mx-lg-4 mx-md-1" [matMenuTriggerFor]="profileMenu">
+          <i class="bi bi-person"></i>
+        </div>
+
+      </div>
+
+      <!-- user profile menu -->
+      <mat-menu #profileMenu="matMenu">
+        <app-menu [nameMenu]="nameMenu1" [menuList]="menuProfile"></app-menu>
+      </mat-menu>
+
+      <!-- user profile menu -->
+      <mat-menu #FAQMenu="matMenu">
+        <app-menu [nameMenu]="nameMenu2"></app-menu>
+      </mat-menu>
+
+      <!-- user profile menu -->
+      <mat-menu #notificationsMenu="matMenu">
+        <app-menu [nameMenu]="nameMenu3"></app-menu>
+      </mat-menu>
+
+    </div>
+
+  </div>
+
+</div>

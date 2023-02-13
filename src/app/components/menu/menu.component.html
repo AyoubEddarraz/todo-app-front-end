@@ -1,0 +1,13 @@
+<ul class="menuList" [class.dark_mode]="darkmode">
+  <!-- if the menu list est vide -->
+  <div *ngIf="menuList.length == 0" class="text-center">Votre liste {{ nameMenu ? ('de ' + nameMenu) : "" }} est vide.</div>
+  <!-- menu list manipulation -->
+  <ng-container *ngFor="let item of menuList; index as i">
+    <hr class="mt-3" *ngIf="checkItemLine(item.routeLink) && i == (menuList.length - 1)">
+    <li [class.delete]="item.options == 'logout'" [routerLink]="item.routeLink" routerLinkActive="active">
+      <i class="bi" [ngClass]="item.icone"></i>
+      <span> {{ item.name }} </span>
+    </li>
+    <hr class="mt-3" *ngIf="checkItemLine(item.routeLink) && i != (menuList.length - 1)">
+  </ng-container>
+</ul>

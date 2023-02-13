@@ -1,0 +1,115 @@
+@import "../../common/style/variables";
+
+// Fix the header in the top of the page
+
+.app{
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  height: auto;
+  overflow: hidden auto;
+  display: flex;
+  background-color: $main_color;
+
+  .sidenav{
+    position: fixed;
+    width: 25%;
+    height: 100vh;
+    border-right: 2px solid $color_main_2_second;
+    background-color: transparent;
+    // overflow: hidden auto;
+  }
+
+  .content{
+    position: relative;
+    width: 75%;
+    height: auto;
+    // overflow: hidden auto;
+
+    header{
+      position: sticky;
+      top: 0;
+      background-color: white;
+      z-index: 100;
+    }
+
+    .hero{
+      width: 100%;
+      height: auto;
+      // overflow: hidden auto;
+    }
+
+  }
+
+}
+
+// For Dynamique Content
+li{
+  position: relative;
+  width: 100%;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  color: $color_main_2;
+  cursor: pointer;
+  font-size: 16px;
+
+  &::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 4px;
+    height: 0;
+    background-color: $color_main_3;
+    border-radius: 9999px 0 0 9999px;
+    transition: height .3s ease-in-out;
+  }
+
+  &:hover{
+    color: black;
+  }
+
+  &:hover::after{
+    height: 100%;
+  }
+
+  &.active{
+    color: $color_main_1;
+
+    &::after{
+      height: 100%;
+    }
+
+  }
+
+  span{
+    margin-left: 1rem;
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+
+  .app{
+    display: block !important;
+
+    .sidenav{
+      width: 100vw !important;
+      display: none;
+
+      &.show{
+        display: block;
+        background-color: white;
+      }
+
+    }
+
+    .content{
+      width: 100vw !important;
+    }
+
+  }
+
+}

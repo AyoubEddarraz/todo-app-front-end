@@ -1,0 +1,35 @@
+<div class="switch rounded">
+  <div class="choix rounded active" routerLink="/account/SignUp">S'inscrire</div>
+  <div class="choix rounded" routerLink="/account/SignIn">Se connecter</div>
+</div>
+
+<div class="alert alert-danger my-3" *ngIf="singUpError"> {{ singUpError }} </div>
+
+<form [formGroup]="singUpForm">
+
+  <div class="head my-5">
+    <h2 class="my-2">Sign Up to .Do</h2>
+    <p>sing up et commencer de Simplifiez vos projets avec .Do</p>
+  </div>
+
+  <mat-form-field appearance="outline">
+    <mat-label>name</mat-label>
+    <input type="text" matInput name="name" placeholder="name" formControlName="name" required>
+    <mat-icon class="mx-2" matPrefix>group</mat-icon>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Email</mat-label>
+    <input type="email" matInput placeholder="example@mail.com" name="email" formControlName="email" required [pattern]="emailPattern">
+    <mat-icon class="mx-2" matPrefix>alternate_email</mat-icon>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Password</mat-label>
+    <input type="password" matInput placeholder="********" name="password" formControlName="password" required>
+    <mat-icon class="mx-2" matPrefix>vpn_key</mat-icon>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" (click)="singUpFun()" [disabled]="!singUpForm.valid">Sign in</button>
+
+</form>

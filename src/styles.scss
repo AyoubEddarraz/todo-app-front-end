@@ -1,0 +1,179 @@
+// app theme
+@import "./app/common/style/theme";
+
+// Bootstrap v5
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+// animations
+@import "~animate.css/animate.min.css";
+
+// Global Font
+@import url('https://fonts.googleapis.com/css2?family=Mohave:ital,wght@1,300&family=Outfit:wght@100;400;600;700&display=swap');
+
+// main variabels
+
+@import "./app/common/style/variables";
+
+body{
+  width: 100%;
+  height: auto;
+  overflow: hidden auto;
+  font-family: 'Mohave', sans-serif !important;
+  font-family: 'Outfit', sans-serif !important;
+}
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+
+// Style Global
+
+
+
+// background color light
+.bg-main{
+  background-color: white !important;
+}
+
+.section_title{
+  font-size: 18px;
+}
+
+
+
+// Delete Color Effect
+.delete{
+
+  &:hover{
+    background-color: $delete_2 !important;
+    color: $delete !important;
+  }
+
+}
+
+
+// Material Class
+
+.mat-menu-content{
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.mat-menu-panel{
+  min-height: auto !important;
+}
+
+// Sdk Style Config
+
+.todoItem{
+  background-color: white !important;
+}
+
+
+// Bootstrap
+
+.row{
+  --bs-gutter-x: 0 !important;
+}
+
+// Dark mode
+
+.main_dark_mode{
+  background-color: $main_dark_color !important;
+  color: white !important;
+}
+
+.dark_mode{
+  background-color: $dark_color !important;
+  color: white !important;
+}
+
+.dark_mode_second{
+  background-color: $dark_color_2 !important;
+  color: white !important;
+}
+
+
+.dark_mode_second, .dark_mode , .main_dark_mode{
+
+  h1, h2, h3, h4, h5, h6 , p, span, strong, div, i, input{
+    color: white !important;
+  }
+
+}
+
+// Custome Model
+
+.custome_model{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, .5);
+  z-index: 1000000 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.custome_model.force{
+  z-index: 10000000 !important;
+}
+
+.custome_model .close{
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.custome_model .content_model{
+  position: relative;
+  min-width: 300px;
+  width: auto;
+  height: auto;
+  overflow: hidden auto;
+  padding: 2rem;
+  background-color: white;
+  transition: all .3s ease-in-out;
+}
+
+.custome_model .content_model.large{
+  min-width: 400px;
+  max-width: 400px;
+}
+
+.close{
+  width: 45px;
+  height: 45px;
+  background-color: #ecf0f1;
+  color: $color_main_3;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+}
+
+.close:hover{
+  background-color: $color_main_3;
+  color: #ecf0f1;
+}
+
+.custome_model button.large{
+  height: 45px !important;
+}
+
+
+/* Confirme Button in Swal Alert */
+button.swal2-confirm{
+  background-color: $color_main_3 !important;
+  color: white !important;
+  outline: none !important;
+  margin: 0 10px !important;
+}

@@ -1,0 +1,98 @@
+<div class="projets">
+
+
+  <div class="title">
+    <h2>Todos</h2>
+  </div>
+
+  <div class="projet row">
+
+    <div class="todo col-md-4">
+      <div class="content shadow-sm rounded p-3" [class.dark_mode]="darkmode">
+
+        <div class="head rounded">
+          <span class="title">todo</span>
+          <div class="count rounded" [class.dark_mode_second]="darkmode"> {{ todo.length }} </div>
+        </div>
+
+        <div class="addNew rounded" [class.dark_mode_second]="darkmode" (click)="setState('TODO')" >
+          <i class="bi bi-plus"></i>
+        </div>
+
+        <div class="todos TODO my-4" [class.py-5]="todo.length == 0" [id]="TODO" cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo" [cdkDropListConnectedTo]="[progressList , completedList]" (cdkDropListDropped)="drop($event)">
+          <div class="todoItem shadow-sm p-3" [class.dark_mode_second]="darkmode" *ngFor="let todo of todo; index as i" cdkDrag (dblclick)="updateTodoModalFun(todo, i, TODO)">
+            <mat-icon class="icone" (click)="deleteTodoFun(todo, i, TODO)">delete_outline</mat-icon>
+            <div class="headTodoItem my-3"><span class="titleHeadTodoItem"> {{ todo.title }} </span></div>
+            <div class="contentTodoItem"> {{ todo.description }} </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="todo col-md-4">
+      <div class="content shadow-sm rounded p-3" [class.dark_mode]="darkmode">
+
+        <div class="head rounded">
+          <span class="title">progress</span>
+          <div class="count rounded" [class.dark_mode_second]="darkmode"> {{ progress.length }} </div>
+        </div>
+
+        <div class="addNew rounded" [class.dark_mode_second]="darkmode" (click)="setState('IN_PROGRESS')" >
+          <i class="bi bi-plus"></i>
+        </div>
+
+        <div class="todos PROGRESS my-4" [class.py-5]="progress.length == 0" [id]="INPROGRESS" cdkDropList #progressList="cdkDropList" [cdkDropListData]="progress" [cdkDropListConnectedTo]="[todoList , completedList]" (cdkDropListDropped)="drop($event)">
+          <div class="todoItem shadow-sm p-3" [class.dark_mode_second]="darkmode" *ngFor="let todo of progress; index as i" cdkDrag (dblclick)="updateTodoModalFun(todo, i,INPROGRESS )">
+            <mat-icon class="icone" (click)="deleteTodoFun(todo , i, INPROGRESS)">delete_outline</mat-icon>
+            <div class="headTodoItem my-3"> <span class="titleHeadTodoItem"> {{ todo.title }} </span> </div>
+            <div class="contentTodoItem"> {{ todo.description }} </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="todo col-md-4">
+      <div class="content shadow-sm rounded p-3" [class.dark_mode]="darkmode">
+
+        <div class="head rounded">
+          <span class="title">done</span>
+          <div class="count rounded" [class.dark_mode_second]="darkmode"> {{ completed.length }} </div>
+        </div>
+
+        <div class="addNew rounded my-2" [class.dark_mode_second]="darkmode" (click)="setState('COMPLETED')">
+          <i class="bi bi-plus"></i>
+        </div>
+
+        <div class="todos COMPLETED my-4" [class.py-5]="completed.length == 0" [id]="COMPLETED" cdkDropList #completedList="cdkDropList" [cdkDropListData]="completed" [cdkDropListConnectedTo]="[todoList , progressList]" (cdkDropListDropped)="drop($event)">
+          <div class="todoItem shadow-sm p-3" [class.dark_mode_second]="darkmode" *ngFor="let todo of completed; index as i" cdkDrag (dblclick)="updateTodoModalFun(todo, i, COMPLETED)">
+            <mat-icon class="icone" (click)="deleteTodoFun(todo, i, COMPLETED)">delete_outline</mat-icon>
+            <div class="headTodoItem my-3"><span class="titleHeadTodoItem"> {{ todo.title }} </span></div>
+            <div class="contentTodoItem"> {{ todo.description }} </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+
+</div>
+
+<!-- Model Create File -->
+<div class="custome_model" *ngIf="newTodoModal">
+  <div class="close" (click)="newTodoModalFun(false)">
+    <mat-icon>close</mat-icon>
+  </div>
+  <div class="content_model large rounded shadow-sm">
+    <h3> {{ updateActive ? "update" : "New" }} Todo</h3>
+    <form [formGroup]="newTodoForm">
+      <input type="text" class="form-control my-2" name="title" formControlName="title" placeholder="todo name*" required>
+      <textarea name="description" cols="20" rows="2" class="form-control my-3" formControlName="description" placeholder="todo description"></textarea>
+    </form>
+    <button mat-raised-button color="primary" class="w-100 large" (click)="newTodoFun()" [disabled]="!newTodoForm.valid" *ngIf="!updateActive" >add new todo</button>
+    <button mat-raised-button color="primary" class="w-100 large" (click)="updateTodo()" [disabled]="!newTodoForm.valid" *ngIf="updateActive" >update todo</button>
+  </div>
+</div>

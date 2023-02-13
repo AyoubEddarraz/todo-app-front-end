@@ -1,0 +1,126 @@
+
+@import "../../../../common/style/variables";
+
+.overview{
+  position: relative;
+
+  .newProjet{
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+  }
+
+  .head_section_presentation{
+    width: 100%;
+    min-height: 300px;
+    height: auto;
+    background-color: $color_main_3;
+    color: white;
+
+    .presentation_image{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img{
+        width: 250px;
+        height: 250px;
+      }
+
+    }
+
+    .presentation_info{
+      display: flex;
+      justify-content: start;
+      align-items: center;
+
+      .title{
+        font-size: 25px;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+
+    }
+
+  }
+
+  .projetsList{
+
+    .list{
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      .projet_item{
+        position: relative;
+        width: 300px;
+        height: auto;
+        background-color: $color_main_2_second;
+        padding: 1rem;
+        margin: 10px 0;
+        margin-right: 10px;
+        padding-bottom: 3rem;
+        cursor: pointer;
+        overflow: hidden;
+        transition: all .3s ease-in-out;
+
+        .title{
+          font-size: 18px;
+          font-weight: 600;
+        }
+
+        .desc{
+          color: $color_main_2;
+          width: 100%;
+          height: auto;
+        }
+
+        i.more{
+          right: 55px;
+        }
+
+        i{
+          position: absolute;
+          bottom: 1rem;
+          right: 1rem;
+          width: 35px;
+          height: 35px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: $color_main_3;
+          color: white;
+          border-radius: 50%;
+        }
+
+        &:hover{
+          background-color: $color_main_3 !important;
+          color: white !important;
+
+          i{
+            background-color: white;
+            color: $color_main_3;
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+
+}
+
+@media screen and (max-width: 768px) {
+
+  .head_section_presentation{
+    min-height: max-content !important;
+  }
+
+  .presentation_image{
+    display: none !important;
+  }
+
+}
